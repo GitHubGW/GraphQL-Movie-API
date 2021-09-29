@@ -1,9 +1,13 @@
-import dogArray, { getById } from "./db";
+import { getAllMovies, getMovieById, addMovieByNameRating, deleteMovieById } from "./db";
 
 const resolvers = {
   Query: {
-    animal: () => dogArray,
-    oneDog: (_, { id }) => getById(id),
+    movies: () => getAllMovies(),
+    movie: (object, { id }) => getMovieById(id),
+  },
+  Mutation: {
+    addMovie: (object, { name, rating }) => addMovieByNameRating(name, rating),
+    deleteMovie: (object, { id }) => deleteMovieById(id),
   },
 };
 
