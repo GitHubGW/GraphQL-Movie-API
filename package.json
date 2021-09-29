@@ -26,5 +26,11 @@
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.6",
     "nodemon": "^2.0.13"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "graphql"
+    ],
+    "ext": "js, ts, json, jsx, env, graphql"
   }
 }
