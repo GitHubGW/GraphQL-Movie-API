@@ -36,7 +36,7 @@ type Mutation {
 
 #### resolvers.js
 
-```
+```javascript
 import { getAllMovies, getMovieById, addMovieByNameRating, deleteMovieById } from "./db";
 
 const resolvers = {
