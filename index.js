@@ -6,4 +6,4 @@ const server = new GraphQLServer({
   resolvers,
 });
 
-server.start(() => console.log("⭐️ http://localhost:4000"));
+server.start(() => console.log("🔥 http://localhost:4000"));

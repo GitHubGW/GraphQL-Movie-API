@@ -1,47 +1,55 @@
-let movieArray = [
-  {
-    id: 1,
-    name: "Star Wars",
-    rating: 6,
-  },
-  {
-    id: 2,
-    name: "Avengers",
-    rating: 9,
-  },
-  {
-    id: 3,
-    name: "The Ring",
-    rating: 7,
-  },
-];
+import axios from "axios";
 
-export const getAllMovies = () => movieArray;
+const API_MOVIE = "https://yts.mx/api/v2/list_movies.json";
+const API_MOVIE_DETAIL = "https://yts.mx/api/v2/movie_details.json";
+const API_MOVIE_SUGGESTIONS = "https://yts.mx/api/v2/movie_suggestions.json";
 
-export const getMovieById = (id) => {
-  const filteredMovie = movieArray.filter((movieObject) => movieObject.id === id);
-  return filteredMovie[0];
+export const getAllMovies = async () => {
+  const {
+    data: {
+      data: { movies },
+    },
+  } = await axios.get(`${API_MOVIE}`);
+
+  return movies;
 };
 
-export const addMovieByNameRating = (name, rating) => {
-  const newMovie = {
-    id: movieArray.length + 1,
-    name,
-    rating,
-  };
-  movieArray.push(newMovie);
-  return newMovie;
+export const getMovieById = async (id) => {
+  const {
+    data: {
+      data: { movie },
+    },
+  } = await axios.get(`${API_MOVIE_DETAIL}?movie_id=${id}`);
+
+  return movie;
 };
 
-export const deleteMovieById = (id) => {
-  const filteredMovie = movieArray.filter((movieObject) => movieObject.id !== id);
+export const getSuggestionsMoviesById = async (id) => {
+  const {
+    data: {
+      data: { movies },
+    },
+  } = await axios.get(`${API_MOVIE_SUGGESTIONS}?movie_id=${id}`);
 
-  if (movieArray.length) {
-    movieArray = filteredMovie;
-    return true;
-  } else {
-    return false;
-  }
+  return movies;
 };
 
-export default movieArray;
+export const getMoviesByPage = async (page) => {
+  const {
+    data: {
+      data: { movies },
+    },
+  } = await axios.get(`${API_MOVIE}?page=${page}`);
+
+  return movies;
+};
+
+export const getMoviesByRating = async (rating) => {
+  const {
+    data: {
+      data: { movies },
+    },
+  } = await axios.get(`${API_MOVIE}?minimum_rating=${rating}`);
+
+  return movies;
+};
