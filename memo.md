@@ -12,7 +12,6 @@ const server = new GraphQLServer({
 });
 
 server.start(() => console.log("http://localhost:4000"));
-
 ```
 
 #### schema.graphql
@@ -33,7 +32,6 @@ type Mutation {
   addMovie(name: String!, rating: Int!): Movie
   deleteMovie(id: Int!): Boolean
 }
-
 ```
 
 #### resolvers.js
@@ -106,5 +104,4 @@ export const deleteMovieById = (id) => {
 };
 
 export default movieArray;
-
 ```
