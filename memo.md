@@ -2,7 +2,7 @@
 
 #### index.js
 
-```
+```javascript
 import { GraphQLServer } from "graphql-yoga";
 import resolvers from "./graphql/resolvers";
 
@@ -16,7 +16,7 @@ server.start(() => console.log("http://localhost:4000"));
 
 #### schema.graphql
 
-```
+```javascript
 type Movie {
   id: Int!
   name: String!
@@ -56,7 +56,7 @@ export default resolvers;
 
 #### db.js
 
-```
+```javascript
 let movieArray = [
   {
     id: 1,
