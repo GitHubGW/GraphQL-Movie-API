@@ -1,4 +1,4 @@
-# GraphQL-Movie-API
+# GraphQL-Movie-Backend
 
 ## 🔗 Demo
 
